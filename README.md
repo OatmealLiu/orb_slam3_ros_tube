@@ -3,10 +3,11 @@ This is a middle tube between ORB-SLAM-3 and ROS
 
 ## To-do
 - [x] Develop Monocular only node for VO
-- [ ] Develop Monocular + IMU node for VIO (debugging)
+- [x] Develop Monocular + IMU node for VIO (debugging)
 - [x] Write launch files for each node and dataset
 - [x] Develop ROS publishers for pose, velocity, pointcloud and path
-- [ ] Create .yaml file for the camera param, IMU param and ORB hyperparam for SAM
+- [x] Create .yaml file for the camera param, IMU param and ORB hyperparam for SAM
+- [ ] Develop two-camera + IMU fusion mode
 - [ ] Fine-tuning the hyperparam for SAM
 
 
