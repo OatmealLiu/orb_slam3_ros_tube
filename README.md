@@ -71,7 +71,8 @@ roslaunch orb_slam3_ros_tube sam_simulator_mono.launch
 # Terminal 2
 rosbag play sam_side_cruise.bag
 ![Image text](https://github.com/OatmealLiu/orb_slam3_ros_tube/blob/master/figures/fig1.png)
-![Image text](https://github.com/OatmealLiu/orb_slam3_ros_tube/blob/master/figures/fig2.png)```
+![Image text](https://github.com/OatmealLiu/orb_slam3_ros_tube/blob/master/figures/fig2.png)
+```
 
 
 ## 2. Topics you can subscribe
