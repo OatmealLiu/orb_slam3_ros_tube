@@ -16,8 +16,8 @@ Camera.k2: 0.0
 Camera.p1: 0.0
 Camera.p2: 0.0
 
-Camera.width: 752       # sam -> 1360
-Camera.height: 480      # sam -> 1024
+Camera.width: 1360       # sam -> 1360
+Camera.height: 1024      # sam -> 1024
 
 # Camera frames per second 
 Camera.fps: 5.0

@@ -8,7 +8,7 @@ This is a middle tube between ORB-SLAM-3 and ROS
 - [x] Develop ROS publishers for pose, velocity, pointcloud and path
 - [x] Create .yaml file for the camera param, IMU param and ORB hyperparam for SAM
 - [ ] Develop two-camera + IMU fusion mode
-- [ ] Fine-tuning the hyperparam for SAM
+- [x] Fine-tuning the hyperparam for SAM
 
 
 # Installation
@@ -58,10 +58,23 @@ Underwater dataset
 - VO
 ```
 # Terminal 1
-roslaunch orb_slam3_ros_tube orb_slam3_mono_underwater  .launch
+roslaunch orb_slam3_ros_tube orb_slam3_mono_underwater.launch
 # Terminal 2
 rosbag play sparus_camera.bag
 ```
+
+SAM Simulator dataset
+- VO
+```
+# Terminal 1
+roslaunch orb_slam3_ros_tube sam_simulator_mono.launch
+# Terminal 2
+rosbag play sam_side_cruise.bag
+![alt text](/figures/fig1.png "Real scene of algea farm inspection in SAM simulator")
+
+![alt text](/figures/fig2.png "Example of algea farm inspection in SAM simulator")
+```
+
 
 ## 2. Topics you can subscribe
 This middle tube will provide you with the following topics that you can subscribe:

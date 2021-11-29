@@ -1,0 +1,183 @@
+Navigation of ROS Filesystems
+---> rospack
+寻找package + stack
+rospack find <package_name>
+rosstack
+rospack depends1 <package_name>
+rospack depends <package_name>
+
+---> roscd
+直接前往package
+roscd <package_name>
+roscd 前往ROS_ROOT
+roscd log
+echo $ROS_PACKAGE_PATH
+
+---> rosls
+rosls <location_name>
+
+---> ros Tab Auto-Completion
+
+Creating a ROS Package
+必要结构：
+	- package.xml: meta information
+	- CMakeLists.txt
+	- Each package must have its own folder
+
+创建：
+	cd ~/catkin_ws/src
+	catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
+	cd ~/catkin_ws
+	catkin_make
+	source ~/catkin_ws/devel/setup.bash
+
+
+Building a ROS package
+
+Node
+rosnode list
+rosnode info <nodename>
+rosrun <package_name> <node_name>
+e.g.:
+	rosrun turtlesim turtlesim_node
+	rosrun turtlesim turtlesim_node __name:=my_turtle
+
+
+RQT Visualization
+rosrun rqt_graph rqt_graph
+rosrun rqt_plot rqt_plot
+
+ROS Topic
+rostopic echo /turtle1/cmd_vel	// print some messages
+rostopic type /turtle1/cmd_vel
+rostopic pub <topic> <msg_type> <args>
+e.g.:
+	rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0,0.0,0.0]' '[0.0,0.0,1.8]'
+rostopic hz /turtle1/pose
+rostopic type /turtle1/cmd_vel | rosmsg show
+
+
+ROS Messages
+rosmsg show geometry_msgs/Twist
+
+ROS Services
+rosservice is another way that nodes can communicate with each other. Services allow nodes to send a request and receive a response
+
+rosservice list         					print information about active services
+rosservice call [service] [args]         	call the service with the provided args
+e.g.:
+	rosservice call /spawn 2 2 0.2 ""
+rosservice type [service]         			print service type
+rosservice find         					find services by service type
+rosservice uri          					print service ROSRPC uri
+
+
+ROS Parameters
+rosparam set [param_name]								set parameter
+rosparam get [param_name]								get parameter
+rosparam load [file_name] [namespace]           		load parameters from file
+rosparam dump [file_name] [namespace]           		dump parameters to file
+e.g.:
+	rosparam dump params.yaml
+rosparam delete         								delete parameter
+rosparam list           								list parameter names
+
+Using rqt_console and roslaunch
+rosrun rqt_console rqt_console
+rosrun rqt_logger_level rqt_logger_level
+
+Using roslaunch
+roslaunch [package] [filename.launch]
+
+cd ~/catkin_ws
+soruce devel/setup.bash
+roscd beginner_tutorials
+
+mkdir launch
+cd launch
+
+Using rosed to edit files in ROS
+rosed [package_name] [filename]
+rosed [package_name] <tab><tab>
+
+Creating a ROS msg and srv
+msg: msg files are simple text files that describe the fields of a ROS message. They are used to generate source code for messages in different languages.
+:= rosmsg show <msg type>
+
+
+srv: an srv file describes a service. It is composed of two parts: a request and a response.
+:= rossrv show <service type>
+
+Using roscp
+roscp [package_name] [file_to_copy_path] [copy_path]
+roscp rospy_tutorials AddTwoInts.srv srv/AddTwoInts.srv
+
+
+Asking for Help in ROS
+rospack -h
+roscd -h
+rosls -h
+roscp -h
+rosmsg -h
+rossrv -h
+catkin_make
+
+
+Recording data to .bag file in ROS
+1) list the full list of topics that are being published in ROS
+		:= rostopic list -v
+
+2) mkdir ~/bagfiles
+   cd ~/bagfiles
+
+3) record all currently running topics
+		:= rosbag record -a
+
+4) record specified topics into specified filename
+		:= rosbag record -O subset /turtle1/cmd_vel /turtle1/pose
+
+5) check the .bag info and advertise .bag file
+		:= rosbag info <your bagfile path>
+		:= rosbag play <your bagfile path>
+		:= rosbag play -r 2 <your bagfile path> // 2 times faster
+		:= time rosbag play --immediate demo.bag --topics /obs1/gps/fix /diagnostics_agg
+
+Read and Write
+rostopic echo /obs1/gps/fix | tee topic1.yaml
+rostopic echo /diagnostics_agg | tee topic2.yaml
++++
+time rosbag play --immediate demo.bag --topics /obs1/gps/fix /diagnostics_agg
+
+
+System Dependencies
+rosdep install [package]
+
+Ros TF tips
+rosrun tf tf_echo [reference_frame] [target_frame]
+
+
+
+Pipeline
+rosrun sam_stonefish_sim bringup.sh
+ctrl+c + upup
+change sam_no_payload_sensors.yaml to sam.yaml + enter
+re-start the simulator
+tmux kill-server
+
+
+
+Camera’s topic
+/sam/perception/camera_down/camera_info : sensor_msgs/CameraInfo
+/sam/perception/camera_down/image_color : sensor_msgs/Image
+/sam/perception/camera_front_left/camera_info
+/sam/perception/camera_front_left/image_color
+/sam/perception/camera_front_right/camera_info
+/sam/perception/camera_front_right/image_color
+
+IMU’s topic
+/sam/core/imu : sensor_msgs/Imu
+
+TF Tree
+/tf : tf2_msgs/TFMessage
+/tf_static : tf2_msgs/TFMessage
+s

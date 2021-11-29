@@ -74,8 +74,11 @@ int main(int argc, char **argv)
     ImuGrabber imugb;
     ImageGrabber igb(&SLAM, &imugb, bEqual);
 
-    ros::Subscriber sub_imu = node_handler.subscribe("/imu", 1000, &ImuGrabber::GrabImu, &imugb); 
-    ros::Subscriber sub_img0 = node_handler.subscribe("/camera/image_raw", 100, &ImageGrabber::GrabImage, &igb);
+    // ros::Subscriber sub_imu = node_handler.subscribe("/imu", 1000, &ImuGrabber::GrabImu, &imugb); 
+    // ros::Subscriber sub_img0 = node_handler.subscribe("/camera/image_raw", 100, &ImageGrabber::GrabImage, &igb);
+
+    ros::Subscriber sub_imu = node_handler.subscribe("/sam/core/imu", 1000, &ImuGrabber::GrabImu, &imugb); 
+    ros::Subscriber sub_img0 = node_handler.subscribe("/sam/perception/camera_front_left/image_color", 100, &ImageGrabber::GrabImage, &igb);
 
     setup_ros_publishers(node_handler, image_transport);
 

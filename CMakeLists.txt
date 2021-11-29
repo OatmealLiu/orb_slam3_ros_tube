@@ -23,12 +23,12 @@ find_package (catkin REQUIRED COMPONENTS
 
 set(OpenCV_DIR /usr/local/opencv)
 find_package(OpenCV 4.4.0)
-if(NOT OpenCV_FOUND)
-  find_package(OpenCV 3.0)
-  if(NOT OpenCV_FOUND)
-    message(FATAL_ERROR "OpenCV > 3.0 not found.")
-  endif()
-endif()
+# if(NOT OpenCV_FOUND)
+#   find_package(OpenCV 3.0)
+#   if(NOT OpenCV_FOUND)
+#     message(FATAL_ERROR "OpenCV > 3.0 not found.")
+#   endif()
+# endif()
 MESSAGE("OPENCV VERSION:")
 MESSAGE(${OpenCV_VERSION})
 
