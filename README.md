@@ -28,7 +28,7 @@ chmod +x build.sh
 Clone the package. Note that it should be a `catkin build` workspace.
 ```
 cd ~/catkin_ws/src/ # Or the name of your workspace
-git clone https://github.com/thien94/orb_slam3_ros_wrapper.git
+git clone https://github.com/OatmealLiu/orb_slam3_ros_tube.git
 ```
 Build the package normally.
 ```
