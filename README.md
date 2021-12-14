@@ -35,6 +35,11 @@ Build the package normally.
 cd ~/catkin_ws/
 catkin build
 ```
+Unzip the ORB vocabulary 
+```
+cd ~/catkin_ws/src/orb_slam3_ros_tube/config
+tar -xf ORBvoc.txt.tar.gz
+```
 
 # Run and Outputs
 ## 1. Run with different datasets and mode

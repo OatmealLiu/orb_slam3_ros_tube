@@ -1,4 +1,4 @@
-/home/miu-razer/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5080.54/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/miu-razer/git_commit_cache/orb_slam3_ros_tube
+/home/miu-razer/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5080.54/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/miu-razer/catkin_ws/src/orb_slam3_ros_tube
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 2.8.12 will be removed from a future version of
   CMake.
@@ -37,4 +37,4 @@ CMake Error at CMakeLists.txt:13 (find_package):
 
 
 -- Configuring incomplete, errors occurred!
-See also "/home/miu-razer/git_commit_cache/orb_slam3_ros_tube/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/home/miu-razer/catkin_ws/src/orb_slam3_ros_tube/cmake-build-debug/CMakeFiles/CMakeOutput.log".

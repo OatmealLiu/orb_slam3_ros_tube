@@ -67,9 +67,12 @@ int main(int argc, char **argv)
 
     bool bEqual = false;
     node_handler.param<bool>(node_name + "/do_equalize", bEqual, false);
-    
+
+    bool enable_pangolin = false;
+    node_handler.param<bool>(node_name + "/enable_pangolin", enable_pangolin, false);
+
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM3::System SLAM(voc_file, settings_file, ORB_SLAM3::System::IMU_MONOCULAR, false);
+    ORB_SLAM3::System SLAM(voc_file, settings_file, ORB_SLAM3::System::IMU_MONOCULAR, enable_pangolin);
 
     ImuGrabber imugb;
     ImageGrabber igb(&SLAM, &imugb, bEqual);

@@ -1,11 +1,11 @@
 %YAML:1.0
 
 #--------------------------------------------------------------------------------------------
-# Camera Parameters. Adjust them!
+# Sensor Parameters for using the front_left_camera on SAM
 #--------------------------------------------------------------------------------------------
 Camera.type: "PinHole"
 
-# Camera calibration and distortion parameters (OpenCV) 
+# Camera calibration and distortion parameters (OpenCV)
 Camera.fx: 503.174
 Camera.fy: 503.174
 Camera.cx: 680.0
@@ -16,10 +16,10 @@ Camera.k2: 0.0
 Camera.p1: 0.0
 Camera.p2: 0.0
 
-Camera.width: 1360       # sam -> 1360
-Camera.height: 1024      # sam -> 1024
+Camera.width: 1360       # allowed -> 752
+Camera.height: 1024      # allowed -> 480
 
-# Camera frames per second 
+# Camera frames per second
 Camera.fps: 5.0
 
 # stereo baseline times fx
@@ -31,15 +31,16 @@ Camera.RGB: 1
 # Close/Far threshold. Baseline times.
 # ThDepth: 35.0 # 35
 
-# Transformation from camera 0 to body-frame
+# Transformation from camera 0 to body-frame (base)
+# Current one is the front_left_camera
 Tbc: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: f
-   data: [-0.695076, -0.717364, -0.000636,  0.884,
-          -0.191556, 0.187302,  -0.962882,  0.267,
-          0.691316, -0.670242, -0.266778,   -0.945,
-          0.0,       0.0,       0.0,       1.0]
+    rows: 4
+    cols: 4
+    dt: f
+    data: [-0.695076, -0.717364, -0.000636,  0.884,
+           -0.191556, 0.187302,  -0.962882,  0.267,
+           0.691316, -0.670242, -0.266778,   -0.945,
+           0.0,       0.0,       0.0,       1.0]
 
 # IMU noise
 IMU.NoiseGyro: 3.045025e-10 #1.6968e-04
@@ -55,16 +56,16 @@ IMU.Frequency: 40
 # ORB Extractor: Number of features per image
 ORBextractor.nFeatures: 1200
 
-# ORB Extractor: Scale factor between levels in the scale pyramid 	
+# ORB Extractor: Scale factor between levels in the scale pyramid
 ORBextractor.scaleFactor: 1.2
 
-# ORB Extractor: Number of levels in the scale pyramid	
+# ORB Extractor: Number of levels in the scale pyramid
 ORBextractor.nLevels: 8
 
 # ORB Extractor: Fast threshold
 # Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
 # Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
-# You can lower these values if your images have low contrast			
+# You can lower these values if your images have low contrast
 ORBextractor.iniThFAST: 20
 ORBextractor.minThFAST: 7
 
