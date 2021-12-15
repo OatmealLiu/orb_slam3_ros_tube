@@ -58,8 +58,11 @@ int main(int argc, char **argv)
     ORB_SLAM3::System SLAM(voc_file, settings_file, ORB_SLAM3::System::MONOCULAR, enable_pangolin);
     ImageGrabber igb(&SLAM);
 
+    std::string cam_topic_name = "/sam/perception/camera_front_left/image_color";
+    node_handler.param<std::string>(node_name + "/cam_topic_name", cam_topic_name, "/sam/perception/camera_front_left/image_color");
     // ros::Subscriber sub_img0 = node_handler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage, &igb);
-    ros::Subscriber sub_img0 = node_handler.subscribe("/sam/perception/camera_front_left/image_color", 1, &ImageGrabber::GrabImage, &igb);  // sam left camera
+//    ros::Subscriber sub_img0 = node_handler.subscribe("/sam/perception/camera_front_left/image_color", 1, &ImageGrabber::GrabImage, &igb);  // sam left camera
+    ros::Subscriber sub_img0 = node_handler.subscribe(cam_topic_name, 1, &ImageGrabber::GrabImage, &igb);  // sam left camera
 
     setup_ros_publishers(node_handler, image_transport);
 

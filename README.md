@@ -73,6 +73,18 @@ SAM Simulator dataset
 ```
 # Terminal 1
 roslaunch orb_slam3_ros_tube sam_simulator_mono.launch
+
+roslaunch orb_slam3_ros_tube sam_real_mono_left.launch
+roslaunch orb_slam3_ros_tube sam_real_mono_inertial_left.launch
+
+roslaunch orb_slam3_ros_tube sam_real_mono_down.launch
+roslaunch orb_slam3_ros_tube sam_real_mono_inertial_down.launch
+
+rosrun  image_transport republish compressed in:=/sam/perception/camera_front_left/image_color  raw  out:=/sam/perception/camera_front_left_test/image_color
+
+rosrun  image_transport republish compressed in:=/csi_cam_0/camera/image_raw  raw  out:=/csi_cam_0/camera/image_raw
+rosrun  image_transport republish compressed in:=/csi_cam_1/camera/image_raw  raw  out:=/csi_cam_1/camera/image_raw
+
 # Terminal 2
 rosbag play sam_side_cruise.bag
 ```
