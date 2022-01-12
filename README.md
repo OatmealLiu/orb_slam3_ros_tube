@@ -46,59 +46,71 @@ tar -xf ORBvoc.txt.tar.gz
 EuRoC dataset
 - VO
 ```
-# Terminal 1
+Terminal 1
 roslaunch orb_slam3_ros_tube orb_slam3_mono_euroc.launch
-# Terminal 2
+
+Terminal 2
 rosbag play MH_01_easy.bag
 ```
 - VIO
 ```
-# Terminal 1
+Terminal 1
 roslaunch orb_slam3_ros_tube orb_slam3_mono_inertial_euroc.launch
-# Terminal 2
+
+Terminal 2
 rosbag play MH_01_easy.bag
 ```
 
 Underwater dataset
 - VO
 ```
-# Terminal 1
+Terminal 1
 roslaunch orb_slam3_ros_tube orb_slam3_mono_underwater.launch
-# Terminal 2
+
+Terminal 2
 rosbag play sparus_camera.bag
 ```
 
 SAM Simulator dataset
 - VO
 ```
-# Terminal 1
+Terminal 1
 roslaunch orb_slam3_ros_tube sam_simulator_mono.launch
+
+Terminal 2
+rosbag play sam_side_cruise.bag
+```
+- VIO
+```
+Terminal 1
 roslaunch orb_slam3_ros_tube sam_simulator_mono_inertial.launch
 
-# Terminal 2
+Terminal 2
 rosbag play sam_side_cruise.bag
 ```
 
-Physical SAM Running
+Run on real SAM
 ```
-# Use Left Camera
+# Use the front LEFT Camera on SAM
 ## Terminal 1
 cd /opt/ros/melodic/lib/image_transport
 rosrun  image_transport republish compressed in:=/csi_cam_1/camera/image_raw  raw  out:=/csi_cam_1/camera/image_raw
 
-# Terminal 2
+## Terminal 2-a: if you want to use VO mode
 roslaunch orb_slam3_ros_tube sam_real_mono_left.launch
 or
+## Terminal 2-a: if you want to use VIO mode
 roslaunch orb_slam3_ros_tube sam_real_mono_inertial_left.launch
 
-# Use Down Camera
+# Use the front DOWN Camera on SAM
 ## Terminal 1
 cd /opt/ros/melodic/lib/image_transport
 rosrun  image_transport republish compressed in:=/csi_cam_0/camera/image_raw  raw  out:=/csi_cam_0/camera/image_raw
 
-## Terminal 2
+## Terminal 2-a: if you want to use VO mode
 roslaunch orb_slam3_ros_tube sam_real_mono_down.launch
 or
+## Terminal 2-a: if you want to use VIO mode
 roslaunch orb_slam3_ros_tube sam_real_mono_inertial_down.launch
 ```
 
